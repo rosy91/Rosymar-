@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width-device-width">
+	<meta name="author" content="Rosymar Escobar"/>
+	<title>Barra de Progreso Sea Level</title>
+</head>
+<style>
+    #progreso{
+        width: 0m;
+    }
+
+    #barra{
+        width: 0;
+        height: 35px;
+        background-color: indianred;
+        text-align: center;
+        line-height: 35px;
+        color: white;
+    }
+
+    #imaxe{
+        width: 800px;
+        height: 500px;
+    }
+
+</style>
+<body>
+    <h1>Sea Level</h1>
+    <h2>Northern Europe</h2>
+
+    <div id="progreso">
+        <div id="imaxe"><img id="imaxe" src="0.jpeg"></div>
+        <div id="barra">0m</div>
+    </div>
+    <button onclick="nivel()">>></button>
+
+    <script>
+        var i = 0;
+        function nivel() {
+            if (i == 0){
+                i = 1;
+                var bar = document.getElementById("barra");
+                var imx = document.getElementById("imaxe");
+                var width = 0;
+                var id = setInterval(mapa, 500);
+                function mapa(){
+                    if (width >= 6){
+                        clearInterval(id);
+                        i = 0;
+                    }else{
+                        width=width+1;
+                        bar.style.width = width*7 + "%"
+                        bar.innerHTML = width + "m";
+                        imx.innerHTML = "<img id='imaxe' src="+ "'" + width + ".jpeg'>";
+                    }    
+                }        
+            }
+        }
+        </script>
+</body>
+</html>
